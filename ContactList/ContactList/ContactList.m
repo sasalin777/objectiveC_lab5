@@ -18,6 +18,6 @@
 }
 
 -(void)addContact:(Contact *)newContact​ {
-    
+    [_contactArray addObject:newContact​];
 }
 @end

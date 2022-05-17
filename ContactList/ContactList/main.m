@@ -16,9 +16,9 @@ int main(int argc, const char * argv[]) {
     @autoreleasepool {
        
         InputCollector *keyin = [InputCollector new];
-        Contact *contacts = [Contact new];
-        ContactList *contaceLists = [ContactList new];
-        NSMutableArray *contactArr = [contaceLists contactArray];
+        
+        ContactList *contactLists = [ContactList new];
+        //NSMutableArray *contactArr = [contactLists contactArray];
         
         BOOL on = YES;
         
@@ -30,10 +30,16 @@ int main(int argc, const char * argv[]) {
                 on = NO;
                 break;
             } else if ([inputString isEqual:@"new"]){
-                NSLog(@"chosen new");
+               // NSLog(@"chosen new");
+                NSString *firstname = [keyin inputForPrompt:@"Please enter your firstname: "];
+                NSString *lastname = [keyin inputForPrompt:@"Please enter your lastname: "];
+                NSString *userphonenr = [keyin inputForPrompt:@"Please enter your phone number: "];
+                NSString *useremail = [keyin inputForPrompt:@"Please enter your email: "];
+                Contact *contacts = [[Contact alloc] initWithFirstname:firstname lastname:lastname phone:userphonenr email:useremail];
+                [contactLists addContact:contacts];
                
             } else if ([inputString isEqual:@"list"]){
-                NSLog(@"chosen list");
+                NSLog(@"%@",contactLists);
                 
             } else {
                 continue;
